@@ -169,6 +169,5 @@ cython_debug/
 
 # Demo file
 flagged/
-*.sh
 !sanitize.sh
 logs/
