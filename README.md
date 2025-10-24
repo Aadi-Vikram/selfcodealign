@@ -11,7 +11,7 @@ To run the evaluation of the model please use the evaluate_model.sh script prese
 
 ```bash
 ./evaluate_model.sh <MODEL_KEY> <MODEL_PATH> <DATASET_NAME>
-
+```
 <MODEL_KEY>: Key of model
 
 <MODEL_PATH>: Hugging face path of model or local location of your model
