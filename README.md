@@ -8,25 +8,25 @@ To run the evaluation of the model please use the evaluate_model.sh script prese
 ## Evaluation Script
 
 **Template to run evaluation:**
-
 ```bash
 ./evaluate_model.sh <MODEL_KEY> <MODEL_PATH> <DATASET_NAME>
 ```
-<MODEL_KEY>: Key of model
 
-<MODEL_PATH>: Hugging face path of model or local location of your model
+**Parameters:**
+- `<MODEL_KEY>`: Key of model
+- `<MODEL_PATH>`: Hugging Face path of model or local location of your model
+- `<DATASET_NAME>`: HumanEval or MBPP
 
-<DATASET_NAME>: Humaneval or MBPP.
+---
 
+## Fine-tuning Script
 
-
-
-To fine tune the model, please execute the following script - finetune_model.sh which is present in the evaluation folder.
-
+To fine-tune the model, execute the following script which is present in the evaluation folder:
+```bash
 ./finetune_model.sh <MODEL_KEY> <OUTPUT_DIR> <DATASET_FILE>
+```
 
-<MODEL_KEY>: The model to fine-tune
-
-<OUTPUT_DIR>: Location where output model will be stored
-
-<DATASET_FILE>: Instruction Dataset 
+**Parameters:**
+- `<MODEL_KEY>`: The model to fine-tune
+- `<OUTPUT_DIR>`: Location where output model will be stored
+- `<DATASET_FILE>`: Instruction dataset
