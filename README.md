@@ -1,4 +1,4 @@
-# Project Proposal - Group 12 - Course 11-785
+# Midterm Report - Group 12 - Course 11-785
 
 We are using self-code align for our base implementation, although we will be testing the implementation on a smaller model set. 
 
