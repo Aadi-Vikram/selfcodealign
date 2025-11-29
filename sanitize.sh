@@ -10,7 +10,7 @@ python -m star_align.sanitize_data \
     --output_file $TARGET \
     --parse_raw_response True \
     --exact_match_dedup True \
-    --passing_only True \
+    --passing_only False \
     --include_left_failed False
 
 if [[ -n $DECONTAMINATION ]]; then
