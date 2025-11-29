@@ -11,7 +11,8 @@ python -m star_align.sanitize_data \
     --parse_raw_response True \
     --exact_match_dedup False \
     --passing_only False \
-    --include_left_failed False
+    --include_left_failed False \
+    --n_cores 2
 
 if [[ -n $DECONTAMINATION ]]; then
     echo "Decontaminating.. (saving to decontamination-output)"
@@ -23,19 +24,5 @@ if [[ -n $DECONTAMINATION ]]; then
         --data_files $TARGET
 fi
 
-echo "Minihash dedup.."
-python -m star_align.minhash_dedup \
-    --data_files $TARGET \
-    --column instruction \
-    --output $TARGET
+echo "Minihash dedup..(not running for dpo)"
 
-python -m star_align.minhash_dedup \
-    --data_files $TARGET \
-    --column response \
-    --output $TARGET
-
-python -m star_align.minhash_dedup \
-    --data_files $TARGET \
-    --column code_representation \
-    --ignore_empty True \
-    --output $TARGET
