@@ -26,7 +26,7 @@ for chunk in "${SOURCE}.chunk_"*; do
         --passing_only False \
         --include_left_failed False \
         --get_code_representation False \
-        --n_cores 2
+        --n_cores 8
 done
 
 echo ""
@@ -43,7 +43,8 @@ if [[ -n $DECONTAMINATION ]]; then
         --output_file $TARGET \
         --output_dir decontamination-output \
         --columns instruction response \
-        --data_files $TARGET
+        --data_files $TARGET \
+        --num_proc 8
 fi
 
 echo "Done!"
