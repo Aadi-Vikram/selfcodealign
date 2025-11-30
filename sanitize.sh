@@ -6,12 +6,17 @@ TARGET=$2
 echo "Splitting file into chunks of 200k lines..."
 split -l 200000 $SOURCE "${SOURCE}.chunk_"
 
-echo "Chunks created:"
-ls -lh "${SOURCE}.chunk_"*
-
-echo ""
 echo "Processing chunks..."
 for chunk in "${SOURCE}.chunk_"*; do
+    if [[ "$chunk" == *.sanitized ]]; then
+        continue
+    fi
+    
+    if [ -f "${chunk}.sanitized" ]; then
+        echo "Skipping $chunk (already processed)"
+        continue
+    fi
+    
     echo "Processing $chunk..."
     python -m star_align.sanitize_data \
         --data_files $chunk \
@@ -21,7 +26,7 @@ for chunk in "${SOURCE}.chunk_"*; do
         --passing_only False \
         --include_left_failed False \
         --get_code_representation False \
-        --n_cores 8
+        --n_cores 2
 done
 
 echo ""
@@ -32,7 +37,7 @@ echo "Cleaning up chunks..."
 rm "${SOURCE}.chunk_"*
 
 if [[ -n $DECONTAMINATION ]]; then
-    echo "Decontaminating.. (saving to decontamination-output)"
+    echo "Decontaminating.."
     python -m star_align.decontamination.find_substrings \
         --dataset_name "json" \
         --output_file $TARGET \
@@ -41,5 +46,4 @@ if [[ -n $DECONTAMINATION ]]; then
         --data_files $TARGET
 fi
 
-echo "Minihash dedup..(not running for dpo)"
 echo "Done!"
