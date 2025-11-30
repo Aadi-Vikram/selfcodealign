@@ -12,7 +12,6 @@ ls -lh "${SOURCE}.chunk_"*
 echo ""
 echo "Processing chunks..."
 for chunk in "${SOURCE}.chunk_"*; do
-    echo "========================================="
     echo "Processing $chunk..."
     python -m star_align.sanitize_data \
         --data_files $chunk \
