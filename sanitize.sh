@@ -16,7 +16,7 @@ for chunk in "${SOURCE}.chunk_"*; do
         --exact_match_dedup False \
         --passing_only False \
         --include_left_failed False \
-        --n_cores 4
+        --n_cores 8
 done
 
 echo "Merging results..."
