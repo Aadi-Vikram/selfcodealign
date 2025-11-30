@@ -20,7 +20,8 @@ for chunk in "${SOURCE}.chunk_"*; do
         --exact_match_dedup False \
         --passing_only False \
         --include_left_failed False \
-        --n_cores 2
+        --get_code_representation False \
+        --n_cores 8
 done
 
 echo ""
